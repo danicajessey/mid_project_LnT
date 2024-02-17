@@ -34,6 +34,9 @@
             @csrf
             @method('PUT')
             <input type="File" class="form-control" id="" name="image">
+            @error('image')
+                <div class="alert alert-danger" role="alert">{{$message}}</div>
+            @enderror
             <br>
             <button type="submit" class="btn btn-success">Update foto</button>
         </form>

@@ -35,19 +35,31 @@
             <label for="" class="form-label">Nama</label>
             <input value="{{$karyawan->nama}}"type="text" class="form-control" id="" name="nama">
           </div>
+          @error('nama')
+            <div class="alert alert-danger" role="alert">{{$message}}</div>
+          @enderror
           <div class="mb-3">
             <label for="" class="form-label">Umur</label>
-            <input value="{{$karyawan->umur}}"type="text" class="form-control" id="" name="umur">
+            <input value="{{$karyawan->umur}}"type="number" class="form-control" id="" name="umur">
           </div>
+          @error('umur')
+            <div class="alert alert-danger" role="alert">{{$message}}</div>
+          @enderror
           <div class="mb-3">
             <label for="" class="form-label">Alamat</label>
             <input value="{{$karyawan->alamat}}"type="text" class="form-control" id="" name="alamat">
           </div>
+          @error('alamat')
+            <div class="alert alert-danger" role="alert">{{$message}}</div>
+          @enderror
           <div class="mb-3">
               <label for="" class="form-label">Nomor telpon</label>
               <input value="{{$karyawan->no_telp}}" type="text" class="form-control" id="" name="no_telp">
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          @error('no_telp')
+          <div class="alert alert-danger" role="alert">{{$message}}</div>
+        @enderror
+          <button type="submit" class="btn btn-success">Edit data</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

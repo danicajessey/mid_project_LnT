@@ -40,6 +40,12 @@ class KaryawanController extends Controller
         return view('edit', compact('karyawan'));
     }
     public function update(Request $request, $id){
+        $request->validate([
+            'nama'=>'required|between:5,20',
+            'umur'=>'required|numeric|gt:20',
+            'alamat'=>'required|between:10,40',
+            'no_telp'=>'required|starts_with:08|digits_between:9,12|regex:/^08\d{7,10}$/',
+        ]);
         $karyawan=karyawan::findOrFail($id);
         $karyawan->update([
             'nama'=>$request->nama,
@@ -55,6 +61,9 @@ class KaryawanController extends Controller
     }
     public function update2(Request $request, $id){
         $karyawan=karyawan::findOrFail($id);
+        $request->validate([
+            'image'=>'required|mimes:png,jpg'
+        ]);
         $fileName=$request->file('image')->getClientOriginalName();
         $request->file('image')->storeAs('public/image', $fileName);
         $karyawan->update([
